@@ -1,0 +1,44 @@
+{
+    "name": "head-file-guard",
+    "displayName": "Head-File-Guard",
+    "description": "add head-file-guard in head-file",
+    "version": "0.0.1",
+    "publisher": "bjr",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.headFileGuard.insertHeadFileGuard"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [{
+            "command": "extension.headFileGuard.insertHeadFileGuard",
+            "title": "Insert Head-File-Guard"
+        }],
+        "configuration": {
+			"title": "Head-File-Guard extension configuration",
+			"type": "object",
+			"properties": {
+				"headFileGuard.type": {
+					"title": "Header-File-Guard settings",
+					"type": [
+								"string"
+							],
+					"default": "guid",
+					"description": "This properties instructed how to generate the headFileGuard,filename or guid "
+					
+				}
+			}
+		}
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "vscode": "^0.11.0"
+    }
+}

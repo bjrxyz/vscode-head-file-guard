@@ -25,7 +25,7 @@ like
 ```json
 // Place your settings in this file to overwrite the default settings
 {
-    headFileGuard.type = "guid"
+    "headFileGuard.type" : "guid"
 }
 ```
 

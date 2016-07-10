@@ -4,6 +4,20 @@
     "description": "add head-file-guard in head-file",
     "version": "0.0.1",
     "publisher": "bjr",
+    "license": "MIT",
+    "author": {
+		"email": "bjrxyz@sina.com",
+		"name": "Bo Jing Ren",
+		"url": "https://bjrxyz.github.io/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bjrxyz/vscode-head-file-guard"
+	},
+	"bugs": {
+		"url": "hhttps://github.com/bjrxyz/vscode-head-file-guard/issues",
+		"email": "bjrxyz@sina.com"
+	},
     "engines": {
         "vscode": "^1.0.0"
     },
@@ -28,7 +42,7 @@
 					"type": [
 								"string"
 							],
-					"default": "guid",
+					"default": "filename",
 					"description": "This properties instructed how to generate the headFileGuard,filename or guid "
 					
 				}

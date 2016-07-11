@@ -12,7 +12,7 @@ like
 
 ### Step 0: Open a project in Visual Studio Code
 ### Step 1: Launch the "Quick Open" Interface (`Ctrl/Cmd + P`)
-### Step 2: Install the extension using "`ext install vscode-head-file-guard`"
+### Step 2: Install the extension using "`ext install head-file-guard`"
 ### Step 3: Restart VS Code when prompted
 ### Step 4: Open your user [or workspace] settings file ([reference](https://code.visualstudio.com/Docs/customization/userandworkspace))
 ### Step 5: Add the "`headFileGuard.type`" property to your settings (see below)

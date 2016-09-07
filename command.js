@@ -94,21 +94,26 @@ function insertFileHeaderGuard() {
     var _root = _workspace.rootPath;
     var guardType = _workspace.getConfiguration("headFileGuard").get("type","filename");
     var guardName = "";
-    if (guardType == "filename") {
-        var currentFileName = _editor.document.fileName.substr(_editor.document.fileName.lastIndexOf("/") + 1);
+    if (guardType === "filename") {
+        console.log(_editor.document.fileName);
+        var separator = "/";
+        if (process.platform === "win32") {
+            separator = "\\";
+        }
+        var currentFileName = _editor.document.fileName.substr(_editor.document.fileName.lastIndexOf(separator) + 1);
         guardName = currentFileName.replace(".", "_").toUpperCase();
     } else {
         guardName = new GUID().newGUID().toUpperCase();
     }
-    
-    var guardStartFormat = "#ifndef _{guard}_\n#define _{guard}_\n";
-    var guardEndFormat = "\n#endif\n";
+
+    var guardStartFormat = "#ifndef {guard}\n#define {guard}\n";
+    var guardEndFormat = "\n#endif /* {guard} */\n";
     var formatArguments = new Object();
     formatArguments["guard"] = guardName;
     if (_editor !== undefined) {
         _editor.edit(function (edit) {
             edit.insert(new vscode.Position(0, 0), format(guardStartFormat, formatArguments));
-            edit.insert(new vscode.Position(_editor.document.lineCount, 0), guardEndFormat);
+            edit.insert(new vscode.Position(_editor.document.lineCount, 0), format(guardEndFormat, formatArguments));
         });
     }
 }

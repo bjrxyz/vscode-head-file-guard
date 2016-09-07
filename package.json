@@ -1,7 +1,7 @@
 {
     "name": "head-file-guard",
     "displayName": "Head-File-Guard",
-    "description": "add head-file-guard in head-file",
+    "description": "add head-file-guard in c/c++ head-file",
     "version": "0.0.2",
     "publisher": "bjr",
     "license": "MIT",

@@ -101,7 +101,7 @@ function insertFileHeaderGuard() {
             separator = "\\";
         }
         var currentFileName = _editor.document.fileName.substr(_editor.document.fileName.lastIndexOf(separator) + 1);
-        guardName = currentFileName.replace(".", "_").toUpperCase();
+        guardName = currentFileName.replace(/\./g, "_").toUpperCase();
     } else if (guardType === "pathname") {
         console.log("file: " + _editor.document.fileName);
         var separator = "/";

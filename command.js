@@ -109,12 +109,12 @@ function insertFileHeaderGuard() {
             separator = "\\";
         }
         var currentPathName = _editor.document.fileName.replace(_root, "");
-        var stop_tokens = _workspace.getConfiguration("headFileGuard").get("path_stop_tokens",["src","include"]);
+        var stop_dirs = _workspace.getConfiguration("headFileGuard").get("path_stop_dirs",["src","include"]);
         var stop = 0;
-        for (var i = 0; i < stop_tokens.length; i++) {
-            var token = stop_tokens[i];
-            if (token != undefined) {
-                var next_stop = currentPathName.lastIndexOf(separator + token + separator) + token.length + 2;
+        for (var i = 0; i < stop_dirs.length; i++) {
+            var dir = stop_dirs[i];
+            if (dir != undefined) {
+                var next_stop = currentPathName.lastIndexOf(separator + dir + separator) + dir.length + 2;
                 if (next_stop > stop) {
                     stop = next_stop;
                 }

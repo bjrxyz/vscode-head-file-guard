@@ -47,7 +47,7 @@
 					"default": "filename",
 					"description": "This properties instructed how to generate the headFileGuard, filename, pathname or guid "
 				},
-				"headFileGuard.path_stop_tokens": {
+				"headFileGuard.path_stop_dirs": {
 					"title": "Header-File-Guard settings",
 					"type": [
 						"array"
@@ -56,7 +56,7 @@
 						"src",
 						"include"
 					],
-					"description": "This property controls which path components will signal the beginning of the considered pathname--the last occurrence of any of these tokens signals the start of the considered path; if empty, then workspace root will be used"
+					"description": "This property controls which dirs in the path will signal the beginning of the considered pathname--the last occurrence of any of these dirs signals the start of the considered path; if empty, then workspace root will be used"
 				},
 				"headFileGuard.prefix": {
 					"title": "Header-File-Guard settings",

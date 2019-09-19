@@ -1,11 +1,11 @@
 {
-    "name": "head-file-guard",
-    "displayName": "Head-File-Guard",
-    "description": "add head-file-guard in c/c++ head-file",
-    "version": "0.0.2",
-    "publisher": "bjr",
-    "license": "MIT",
-    "author": {
+	"name": "head-file-guard",
+	"displayName": "Head-File-Guard",
+	"description": "add head-file-guard in c/c++ head-file",
+	"version": "0.0.2",
+	"publisher": "bjr",
+	"license": "MIT",
+	"author": {
 		"email": "bjrxyz@sina.com",
 		"name": "Bo Jing Ren",
 		"url": "https://bjrxyz.github.io/"
@@ -18,41 +18,66 @@
 		"url": "hhttps://github.com/bjrxyz/vscode-head-file-guard/issues",
 		"email": "bjrxyz@sina.com"
 	},
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "onCommand:extension.headFileGuard.insertHeadFileGuard"
-    ],
-    "main": "./extension",
-    "contributes": {
-        "commands": [{
-            "command": "extension.headFileGuard.insertHeadFileGuard",
-            "title": "Insert Head-File-Guard"
-        }],
-        "configuration": {
+	"engines": {
+		"vscode": "^1.0.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.headFileGuard.insertHeadFileGuard"
+	],
+	"main": "./extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.headFileGuard.insertHeadFileGuard",
+				"title": "Insert Head-File-Guard"
+			}
+		],
+		"configuration": {
 			"title": "Head-File-Guard extension configuration",
 			"type": "object",
 			"properties": {
 				"headFileGuard.type": {
 					"title": "Header-File-Guard settings",
 					"type": [
-								"string"
-							],
+						"string"
+					],
 					"default": "filename",
-					"description": "This properties instructed how to generate the headFileGuard,filename or guid "
-					
+					"description": "This properties instructed how to generate the headFileGuard, filename, pathname or guid "
+				},
+				"headFileGuard.path_stop_tokens": {
+					"title": "Header-File-Guard settings",
+					"type": [
+						"array"
+					],
+					"default": [
+						"src",
+						"include"
+					],
+					"description": "This property controls which path components will signal the beginning of the considered pathname--the last occurrence of any of these tokens signals the start of the considered path; if empty, then workspace root will be used"
+				},
+				"headFileGuard.prefix": {
+					"title": "Header-File-Guard settings",
+					"type": [
+						"string"
+					],
+					"default": "",
+					"description": "This property allows a custom prefix to be added to all generated header guard names"
 				}
 			}
 		}
-    },
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "vscode": "^0.11.0"
-    }
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"vscode": "^0.11.0"
+	},
+	"__metadata": {
+		"id": "2f439332-23cb-4928-bd82-577a9ea0fddf",
+		"publisherDisplayName": "bjr",
+		"publisherId": "feec67a9-51aa-416d-b324-b4a82ab0b57a"
+	}
 }

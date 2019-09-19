@@ -102,9 +102,36 @@ function insertFileHeaderGuard() {
         }
         var currentFileName = _editor.document.fileName.substr(_editor.document.fileName.lastIndexOf(separator) + 1);
         guardName = currentFileName.replace(".", "_").toUpperCase();
+    } else if (guardType === "pathname") {
+        console.log("file: " + _editor.document.fileName);
+        var separator = "/";
+        if (process.platform === "win32") {
+            separator = "\\";
+        }
+        var currentPathName = _editor.document.fileName.replace(_root, "");
+        var stop_tokens = _workspace.getConfiguration("headFileGuard").get("path_stop_tokens",["src","include"]);
+        var stop = 0;
+        for (var i = 0; i < stop_tokens.length; i++) {
+            var token = stop_tokens[i];
+            if (token != undefined) {
+                var next_stop = currentPathName.lastIndexOf(separator + token + separator) + token.length + 2;
+                if (next_stop > stop) {
+                    stop = next_stop;
+                }
+            }
+        }
+        currentPathName = currentPathName.substr(stop);
+        while (currentPathName.indexOf(separator) == 0) {
+            currentPathName = currentPathName.substr(1);
+        }
+        console.log("pathname: '" + currentPathName + "'");
+        guardName = currentPathName.replace(/\./g, "_").replace(new RegExp(separator, "g"), "__").toUpperCase();
     } else {
         guardName = new GUID().newGUID().toUpperCase();
     }
+
+    var prefix = _workspace.getConfiguration("headFileGuard").get("prefix", "");
+    guardName = prefix + guardName;
 
     var guardStartFormat = "#ifndef {guard}\n#define {guard}\n";
     var guardEndFormat = "\n#endif /* {guard} */\n";
